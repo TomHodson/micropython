@@ -33,6 +33,7 @@
 
 // Variant-specific definitions.
 #include "mpconfigvariant.h"
+#include "emscripten.h"
 
 #ifndef MICROPY_CONFIG_ROM_LEVEL
 #define MICROPY_CONFIG_ROM_LEVEL (MICROPY_CONFIG_ROM_LEVEL_EXTRA_FEATURES)
@@ -92,6 +93,7 @@
 #define MICROPY_VM_HOOK_INIT static uint vm_hook_divisor = MICROPY_VM_HOOK_COUNT;
 #define MICROPY_VM_HOOK_POLL if (--vm_hook_divisor == 0) { \
         vm_hook_divisor = MICROPY_VM_HOOK_COUNT; \
+        emscripten_sleep(0); \
         extern void mp_js_hook(void); \
         mp_js_hook(); \
 }

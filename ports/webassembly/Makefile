@@ -79,7 +79,10 @@ EXPORTED_RUNTIME_METHODS_EXTRA += ,\
 	setValue,\
 	stringToUTF8
 
-JSFLAGS += -s EXPORTED_FUNCTIONS="\
+JSFLAGS += \
+    -s ASYNCIFY\
+	-s ASYNCIFY_STACK_SIZE=8000\
+	-s EXPORTED_FUNCTIONS="\
 	_free,\
 	_malloc,\
 	_mp_js_init,\
