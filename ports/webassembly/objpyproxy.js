@@ -235,6 +235,7 @@ class PyProxyThenable {
             "null",
             ["number", "pointer"],
             [this._ref, values],
+            {async: true},
         );
         return proxy_convert_mp_to_js_obj_jsside_with_free(values);
     }
